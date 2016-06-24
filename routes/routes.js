@@ -3,7 +3,8 @@ var db = new JsonDB("myDataBase", true, true);
 
 var appRouter = function(app) {
   app.get("/", function(req, res) {
-    res.send("Hello World");
+    var resstring = "<p><a href='http://localhost:3000/buttons'>Buttons</a></p>";
+    res.send("<p>Simple Button Server</p>" + resstring);
   });
 
   app.get("/buttons", function(req, res) {
