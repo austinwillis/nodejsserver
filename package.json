@@ -6,7 +6,12 @@
   "dependencies": {
     "body-parser": "^1.15.2",
     "express": "^4.14.0",
-    "httpdispatcher": "^1.0.0"
+    "httpdispatcher": "^1.0.0",
+    "node-json-db": "^0.7.2"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/austinwillis/nodejsserver.git"
   },
   "devDependencies": {},
   "scripts": {

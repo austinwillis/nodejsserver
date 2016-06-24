@@ -1,31 +1,12 @@
-var dispatcher = require('httpdispatcher');
-var http = require('http');
+var express = require('express');
+var bodyParser = require('body-parser');
+var app = express();
 
-const PORT=8080;
+app.use(bodyParser.json());
+app.use(bodyParser.urlencoded({extended:true}));
 
-dispatcher.setStatic('resources');
+var routes = require("./routes/routes.js")(app);
 
-dispatcher.onGet("/page1", function(req, res) {
-	res.writeHead(200, {'Contenet-Type': 'text/plain'});
-	res.end('Page One');
-});
-
-dispatcher.onPost("/post1", function(req, res) {
-	res.writeHead(200, {'Content-Type': 'text/plain'});
-	res.end('Got Post Data');
-});
-
-function handleRequest(request, response) {
-	try {
-		console.log(request.url);
-		dispatcher.dispatch(request, response);
-	} catch(err) {
-		console.log(err);
-	}
-}
-
-var server = http.createServer(handleRequest);
-
-server.listen(PORT, function() {
-	console.log("Server listening on: http://localhost:%s", PORT);
+var server = app.listen(3000, function() {
+  console.log("Listening on port %s", server.address().port);
 });
