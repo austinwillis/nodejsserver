@@ -7,25 +7,19 @@ var appRouter = function(app) {
     res.send("<p>Simple Button Server</p>" + resstring);
   });
 
-  app.get("/buttons", function(req, res) {
+  app.get("/api/buttons", function(req, res) {
     //res.send(db.getData("/buttons"));
-    var resstring;
-    var array = db.getData("/buttons");
-    resstring += array;
-    for (var k in array) {
-      resstring +="<p>button : " + k + " - time : " + array[k] + "</p>";
-    }
-    res.send(resstring);
+    res.send(db.getData("/buttons"));
   });
 
-  app.post("/buttonPress", function(req, res) {
+  app.post("/api/buttonPress", function(req, res) {
     var date = new Date();
     var button = req.query.button;
     if (button === 'undefined') {
       res.send("Missing button name");
     } else {
-      db.push("/buttons/" + button, getDateTime());  
-      res.send("Thank you for pressing the button");
+      db.push("/buttons/" + button, getDateTime());
+      res.send(db.getData("/buttons/" + button));
     }
   });
 }
