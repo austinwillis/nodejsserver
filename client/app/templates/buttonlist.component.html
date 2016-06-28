@@ -6,6 +6,9 @@
     </tr>
   </thead>
   <tbody>
-    <tr></tr>
+    <tr *ngFor="#key of buttons">
+      <td>{{ key }}</td>
+      <td>{{ buttons[key] }}</td>
+    </tr>
   </tbody>
 </table>
