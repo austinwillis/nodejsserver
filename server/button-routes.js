@@ -39,9 +39,9 @@ app.post('/api/buttonPress', function(req, res) {
   if (button === 'undefined') {
     res.send("Missing button name");
   } else {
-    var numButtons = db.getData("/numButtons");
-    db.push("/numButtons", numButtons + 1);
-    db.push("/buttons/button" + numButtons + 1, {'name' : button, 'time' : getDateTime() });
-    res.send(db.getData("/buttons/button" + numButtons + 1));
+    var buttons = db.getData("/buttons");
+    buttons.push({'name' : button, 'time' : getDateTime() });
+    db.push("/buttons", buttons);
+    res.send({'name' : button, 'time' : getDateTime()});
   }
 });

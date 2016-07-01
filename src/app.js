@@ -31,49 +31,19 @@ System.register(['angular2/platform/browser', 'angular2/core', 'angular2/common'
                 function App(http) {
                     this.http = http;
                 }
+                App.prototype.ngOnInit = function () {
+                    this.getButtons();
+                };
                 App.prototype.getButtons = function () {
                     var _this = this;
                     this.http.get('http://localhost:3001/api/buttons')
-                        .subscribe(function (data) { return _this.buttons = data.json(); }, function (err) { return _this.logError(err.text()); }, function () { return console.log("Got Buttons"); });
+                        .subscribe(function (data) { return _this.generateArray(data.json()); });
+                };
+                App.prototype.generateArray = function (obj) {
+                    this.buttons = obj.data;
                 };
                 App.prototype.logError = function (err) {
                     console.error('There was an error: ' + err);
-                };
-                App.prototype.saveJwt = function (jwt) {
-                    if (jwt) {
-                        localStorage.setItem('id_token', jwt);
-                    }
-                };
-                App.prototype.getRandomQuote = function () {
-                    var _this = this;
-                    this.http.get('http://localhost:3001/api/random-quote')
-                        .subscribe(function (data) { return _this.randomQuote = data.text(); }, function (err) { return _this.logError(err.text()); }, function () { return console.log('Random Quote Complete'); });
-                };
-                App.prototype.authenticate = function (username, password) {
-                    var _this = this;
-                    var creds = JSON.stringify({ username: username.value, password: password.value });
-                    var headers = new http_1.Headers();
-                    headers.append('Content-Type', 'application/json');
-                    this.http.post('http://localhost:3001/sessions/create', creds, {
-                        headers: headers
-                    })
-                        .subscribe(function (data) {
-                        _this.saveJwt(data.json().id_token);
-                        username.value = null;
-                        password.value = null;
-                    }, function (err) { return _this.logError(err.json().message); }, function () { return console.log('Authentication Complete'); });
-                };
-                App.prototype.getSecretQuote = function () {
-                    var _this = this;
-                    var jwt = localStorage.getItem('id_token');
-                    var authHeader = new http_1.Headers();
-                    if (jwt) {
-                        authHeader.append('Authorization', 'Bearer ' + jwt);
-                    }
-                    this.http.get('http://localhost:3001/api/protected/random-quote', {
-                        headers: authHeader
-                    })
-                        .subscribe(function (data) { return _this.secretQuote = data.text(); }, function (err) { return _this.logError(err.text()); }, function () { return console.log('Secret Quote Complete'); });
                 };
                 App = __decorate([
                     core_1.Component({

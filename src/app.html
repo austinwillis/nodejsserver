@@ -1,6 +1,18 @@
-<header>
-  <h1 (click)="getButtons()" class="title">Button List</h1>
-</header>
-  <div *ngIf="buttons">Button JSON</div>
-  <div>{{ buttons }}</div>
+    <navcomp></navcomp>
+    <div class="container">
+      <div class="starter-template">
+        <h1>Button List</h1>
+        <table class="table table-striped table-hover">
+          <thead>
+            <th>Button</th>
+            <th>Time</th>
+          </thead>
+          <tbody>
+            <tr *ngFor="#button of buttons">
+              <td>{{ button.name }}</td><td>{{ button.time }}</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+    </div><!-- /.container -->
 <section>

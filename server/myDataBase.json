@@ -1,21 +1,20 @@
 {
-    "numButtons": 3,
-    "buttons": {
-        "button1": {
-            "name": "angular2",
-            "time": "2016:06:28:20:33:28"
+    "buttons": [
+        {
+            "name": "Angular3",
+            "time": "2016:06:30:23:14:22"
         },
-        "button01": {
-            "name": "angular2",
-            "time": "2016:06:28:20:34:21"
+        {
+            "name": "Angular3",
+            "time": "2016:06:30:23:17:35"
         },
-        "button11": {
-            "name": "angular2",
-            "time": "2016:06:28:20:34:26"
+        {
+            "name": "Angular4",
+            "time": "2016:06:30:23:17:41"
         },
-        "button21": {
-            "name": "angular2",
-            "time": "2016:06:28:20:34:55"
+        {
+            "name": "Angular3",
+            "time": "2016:06:30:23:18:04"
         }
-    }
+    ]
 }
