@@ -1,4 +1,4 @@
-System.register(['angular2/platform/browser', 'angular2/core', 'angular2/common', 'angular2/http', './nav'], function(exports_1, context_1) {
+System.register(['angular2/platform/browser', 'angular2/core', 'angular2/common', 'angular2/http', './nav', './buttonpress'], function(exports_1, context_1) {
     "use strict";
     var __moduleName = context_1 && context_1.id;
     var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
@@ -10,7 +10,7 @@ System.register(['angular2/platform/browser', 'angular2/core', 'angular2/common'
     var __metadata = (this && this.__metadata) || function (k, v) {
         if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
     };
-    var browser_1, core_1, common_1, http_1, nav_1;
+    var browser_1, core_1, common_1, http_1, nav_1, buttonpress_1;
     var App;
     return {
         setters:[
@@ -28,6 +28,9 @@ System.register(['angular2/platform/browser', 'angular2/core', 'angular2/common'
             },
             function (nav_1_1) {
                 nav_1 = nav_1_1;
+            },
+            function (buttonpress_1_1) {
+                buttonpress_1 = buttonpress_1_1;
             }],
         execute: function() {
             App = (function () {
@@ -53,7 +56,7 @@ System.register(['angular2/platform/browser', 'angular2/core', 'angular2/common'
                         selector: 'app'
                     }),
                     core_1.View({
-                        directives: [common_1.CORE_DIRECTIVES, common_1.FORM_DIRECTIVES, nav_1.Nav],
+                        directives: [common_1.CORE_DIRECTIVES, common_1.FORM_DIRECTIVES, nav_1.Nav, buttonpress_1.Buttonpress],
                         templateUrl: './src/app.html'
                     }), 
                     __metadata('design:paramtypes', [http_1.Http])

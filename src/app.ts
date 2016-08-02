@@ -3,6 +3,7 @@ import { Component, View } from 'angular2/core';
 import { CORE_DIRECTIVES, FORM_DIRECTIVES } from 'angular2/common';
 import { Http, Headers, HTTP_PROVIDERS } from 'angular2/http';
 import { Nav } from './nav';
+import { Buttonpress } from './buttonpress';
 
 interface Button {
   name: string;
@@ -13,7 +14,7 @@ interface Button {
   selector: 'app'
 })
 @View({
-  directives: [ CORE_DIRECTIVES, FORM_DIRECTIVES, Nav ],
+  directives: [ CORE_DIRECTIVES, FORM_DIRECTIVES, Nav, Buttonpress ],
   templateUrl: './src/app.html'
 })
 

@@ -1,4 +1,6 @@
 var express = require('express');
+var multer = require('multer');
+var upload = multer();
 var JsonDB = require('node-json-db');
 var db = new JsonDB("myDataBase", true, true);
 
@@ -33,9 +35,10 @@ app.get('/api/buttons', function(req, res) {
   });
 });
 
-app.post('/api/buttonPress', function(req, res) {
+app.post('/api/buttonPress', upload.array(), function(req, res, next) {
   var date = new Date();
-  var button = req.query.button;
+  var button = req.body.name;
+  console.log(button);
   if (button === 'undefined') {
     res.send("Missing button name");
   } else {
