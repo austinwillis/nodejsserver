@@ -13,7 +13,7 @@ interface Button {
   selector: 'app'
 })
 @View({
-  directives: [ CORE_DIRECTIVES, FORM_DIRECTIVES ],
+  directives: [ CORE_DIRECTIVES, FORM_DIRECTIVES, Nav ],
   templateUrl: './src/app.html'
 })
 
